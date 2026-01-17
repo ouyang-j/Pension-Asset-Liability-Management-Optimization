@@ -1,2 +1,38 @@
-# Pension-Asset-Liability-Management-Optimization
-an optimal fixed-income portfolio to immunize $9.3B in inflation-indexed pension liabilities over an 80-quarter horizon. Implemented Linear Programming in R to minimize cost while managing credit scores, inflation-linkage caps, and liquidity constraints
+# Pension Asset-Liability Management and Liability-Driven Investment Optimization
+
+## Project Overview
+This project develops an immunization strategy for a "closed and frozen" defined benefit (DB) pension plan. The objective is to construct an optimal fixed-income portfolio from 310 tradable securities to cover 80 quarters (20 years) of inflation-indexed benefit payments while minimizing the total economic cost to the plan sponsor.
+
+## The Challenge: Actuarial Complexity
+Managing a pension fund requires balancing precise cash flow matching with rigorous risk and regulatory constraints:
+* **Liability Matching:** Covering 80 quarters of expected benefit payments indexed to CPI inflation.
+* **Diverse Security Universe:** Selecting from Nominal Treasuries, TIPS, Corporate Inflation-Protected Securities (CIPS), and Secondary Market Annuities (SMAs).
+* **Inflation Risk:** Deflating nominal cash flows by a projected 3.0% per year to match real liability values.
+* **Credit Risk Management:** Maintaining a dollar-weighted portfolio credit score below 0.4 based on a 0-3 rating scale (Default & Downgrade risk mitigation).
+
+## Methodology & Optimization Logic
+### 1. Objective Function
+The model utilizes **Linear Programming** to minimize the total cost ($Z$), defined as:
+$$Min \ Z = \sum (x_i \cdot P_i) + c_0 + c_{80}$$
+Where:
+* $x_i \cdot P_i$: Total cost of bond purchases.
+* $c_0$: Initial cash deposit.
+* $c_{80}$: Surplus funds remaining after 20 years (to minimize tax inefficiency).
+
+### 2. Constraint Framework
+* **Benefit Coverage:** Ensuring $(Cash \ Available)_t \geq (Benefit \ Payment)_t$ for all $t \in [1, 80]$.
+* **Allocation Caps:** Diversification limits prevent over-exposure: TIPS (80%), Nominal Bonds (80%), CIPS (30%), and SMAs (10%)].
+* **Structural Cash Flow Limit:** Nominal cash flows (non-indexed) are capped at 20% of total portfolio cash flows to control long-term inflation exposure.
+
+### 3. Actuarial Techniques
+* **Sensitivity Analysis (Shadow Pricing):** Evaluated the economic impact of relaxing credit quality and allocation constraints to identify cost-saving opportunities.
+* **Cash Reinvestment:** Modeled excess funds earning a 2.0% nominal interest rate between quarterly payment cycles.
+
+## Tech Stack
+* **Language:** R
+* **Solver:** `Rglpk` (GNU Linear Programming Kit) 
+* **Reporting:** R Markdown & LaTeX
+
+## How to Run
+1. Ensure `BenefitPayments.txt`, `BondData.txt`, `NomCashflow.txt`, and `RealCashflow.txt` are in the `/data` directory.
+2. Run `src/bond_optimizer.R` to execute the solver and generate the optimal purchase list.
