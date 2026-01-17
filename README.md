@@ -1,4 +1,9 @@
 # Pension Asset-Liability Management and Liability-Driven Investment Optimization
+![R](https://img.shields.io/badge/r-%23276DC3.svg?style=for-the-badge&logo=r&logoColor=white)
+![RStudio](https://img.shields.io/badge/RStudio-%2375AADB.svg?style=for-the-badge&logo=rstudio&logoColor=white)
+![Quantmod](https://img.shields.io/badge/Quantmod-%23276DC3.svg?style=for-the-badge&logo=r&logoColor=white)
+![MASS](https://img.shields.io/badge/MASS-%23276DC3.svg?style=for-the-badge&logo=r&logoColor=white)
+![Rglpk](https://img.shields.io/badge/Rglpk-%23276DC3.svg?style=for-the-badge&logo=r&logoColor=white)
 
 ## Project Overview
 This project develops an immunization strategy for a "closed and frozen" defined benefit (DB) pension plan. The objective is to construct an optimal fixed-income portfolio from 310 tradable securities to cover 80 quarters (20 years) of inflation-indexed benefit payments while minimizing the total economic cost to the plan sponsor.
