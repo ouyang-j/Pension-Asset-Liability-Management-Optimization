@@ -26,7 +26,7 @@ Where:
 
 ### 3. Actuarial Techniques
 * **Sensitivity Analysis (Shadow Pricing):** Evaluated the economic impact of relaxing credit quality and allocation constraints to identify cost-saving opportunities.
-* **Cash Reinvestment:** Modeled excess funds earning a 2.0% nominal interest rate between quarterly payment cycles.
+* **Cash Reinvestment:** Modeled excess funds (cash) earning a risk-free nominal interest rate between quarterly payment cycles (use 2.0% for simpliciy). Note that, the rate should be adjusted with the inflation rate
 
 ## Tech Stack
 * **Language:** R
